@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-10-21T06:09:56Z" name="Suite" finished-at="2022-10-21T06:11:33Z" duration-ms="96365">
+    <groups>
+    </groups>
+    <test started-at="2022-10-21T06:09:56Z" name="Test" finished-at="2022-10-21T06:11:33Z" duration-ms="96365">
+      <class name="com.qa.test.FetchDetailsFromAPIAndLogin">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.test.FetchDetailsFromAPIAndLogin@769a1df5]" started-at="2022-10-21T06:09:56Z" name="setUp" finished-at="2022-10-21T06:10:03Z" duration-ms="6141" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="fetchFromAPIAndCreateAccount()[pri:0, instance:com.qa.test.FetchDetailsFromAPIAndLogin@769a1df5]" started-at="2022-10-21T06:10:03Z" name="fetchFromAPIAndCreateAccount" description="Creating Account using name fetched from API" finished-at="2022-10-21T06:10:47Z" duration-ms="44715" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fetchFromAPIAndCreateAccount -->
+        <test-method signature="purchaseOrder()[pri:1, instance:com.qa.test.FetchDetailsFromAPIAndLogin@769a1df5]" started-at="2022-10-21T06:10:47Z" name="purchaseOrder" description="Purchase order after adding it to cart" finished-at="2022-10-21T06:11:33Z" duration-ms="45211" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- purchaseOrder -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.test.FetchDetailsFromAPIAndLogin@769a1df5]" started-at="2022-10-21T06:11:33Z" name="tearDown" finished-at="2022-10-21T06:11:33Z" duration-ms="225" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.qa.test.FetchDetailsFromAPIAndLogin -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

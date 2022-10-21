@@ -4,70 +4,57 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 
-
+import resources.ExtentReporterNG;
 
 public class ListnerImpl implements ITestListener
 
-
 {
+	// Extent Report Declarations
+	private static ExtentReports extent = ExtentReporterNG.createInstance();
+	private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
 	@Override
-	public void onTestStart(ITestResult result)
-	{
-		System.out.println("===========================================================");
-		System.out.println("Test Case Execution Started,Test Name is:\t"+result.getName());
-		System.out.println("===========================================================");
-		
+	public synchronized void onStart(ITestContext context) {
+		System.out.println("Extent Reports Version 3 Test Suite started!");
 	}
 
 	@Override
-	public void onTestSuccess(ITestResult result) 
-	{
-		System.out.println("===========================================================");
-		System.out.println("Test Case Executed Sucesfully,Test Name is:\t"+result.getName());
-		System.out.println("===========================================================");
+	public synchronized void onFinish(ITestContext context) {
+		System.out.println(("Extent Reports Version 3  Test Suite is ending!"));
+		extent.flush();
 	}
 
 	@Override
-	public void onTestFailure(ITestResult result) 
-	{
-		System.out.println("===========================================================");
-		System.out.println("Test Case Execution Got Failed,Test Name is:\t"+result.getName());
-		System.out.println("===========================================================");
-		
+	public synchronized void onTestStart(ITestResult result) {
+		System.out.println((result.getMethod().getMethodName() + " started!"));
+		ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(),
+				result.getMethod().getDescription());
+		test.set(extentTest);
 	}
 
 	@Override
-	public void onTestSkipped(ITestResult result)
-	{
-		System.out.println("===========================================================");
-		System.out.println("Test Case is Skipped,Test Name is:\t"+result.getName());
-		System.out.println("===========================================================");
-		
+	public synchronized void onTestSuccess(ITestResult result) {
+		System.out.println((result.getMethod().getMethodName() + " passed!"));
+		test.get().pass("Test passed");
 	}
 
 	@Override
-	public void onTestFailedButWithinSuccessPercentage(ITestResult result)
-	{
-	
-		
+	public synchronized void onTestFailure(ITestResult result) {
+		System.out.println((result.getMethod().getMethodName() + " failed!"));
+		test.get().fail(result.getThrowable());
 	}
 
 	@Override
-	public void onStart(ITestContext context)
-	{
-	
-		
+	public synchronized void onTestSkipped(ITestResult result) {
+		System.out.println((result.getMethod().getMethodName() + " skipped!"));
+		test.get().skip(result.getThrowable());
 	}
 
 	@Override
-	public void onFinish(ITestContext context) 
-	{
-	
-		
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		System.out.println(("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
 	}
-
-	
-
 }

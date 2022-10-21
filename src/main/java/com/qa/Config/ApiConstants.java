@@ -1,9 +1,5 @@
 package com.qa.Config;
 
-import java.util.Properties;
-
-
-
 public class ApiConstants {
 	
 	
